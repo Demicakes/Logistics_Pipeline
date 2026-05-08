@@ -12,14 +12,7 @@ This repository contains a complete end-to-end Data Engineering pipeline. It dem
 - **The Fix:** Performed a "Hard Reset" by deleting local `.git` directories and re-initializing specifically within the `Logistics_Pipeline` folder. 
 - **The Lesson:** Always ensure the terminal is rooted in the project folder before running `git init`.
 
-### Phase 2: Database Recovery & Security
-- **The Challenge:** Locked out of pgAdmin due to a forgotten master password.
-- **The Fix:** 1. Located the `pg_hba.conf` file in the Postgres directory.
-    2. Temporarily changed authentication to `trust`.
-    3. Used the "Query Tool" in pgAdmin to run `ALTER USER postgres WITH PASSWORD 'password123';`.
-    4. Re-secured the database by switching back to `scram-sha-256`.
-
-### Phase 3: The ETL Pipeline Execution
+### Phase 2: The ETL Pipeline Execution
 - **The Challenge:** Attempting to load data into the "Gold" layer before the "Silver" files existed.
 - **The Fix:** Established a 3-step execution order:
     1. `python scripts/01_generate_bronze.py` (Raw Data Generation)
